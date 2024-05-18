@@ -1,0 +1,28 @@
+.text-area {
+    -fx-background-color: #3c4257;
+    -fx-text-fill: white;
+    -fx-cursor: none;
+}
+.text-area .content {
+    -fx-cursor: none;
+    -fx-background-color: #3c4257;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: #3c4257;
+}
+
+.text-area .scroll-bar,
+.text-area .scroll-bar .thumb,
+.text-area .scroll-bar .track,
+.text-area .corner {
+    -fx-background-color: transparent;
+     /*-fx-opacity: 0;*/
+
+}
+
+.text-area .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-background-color: transparent;
+}
+
+

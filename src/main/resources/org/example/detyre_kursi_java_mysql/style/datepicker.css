@@ -1,0 +1,100 @@
+/* Define primary, secondary, and light grey colors */
+* {
+    -fx-primary-color: #3c4257;
+    -fx-secondary-color: #4B6EAF;
+    -fx-light-grey-color: #d1d1d1;
+
+    -fx-focus-color: -fx-secondary-color;
+}
+
+/* DatePicker main container */
+.date-picker {
+    -fx-background-color: white, #8793b7;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+/* Text field inside DatePicker */
+.date-picker > .text-field {
+    -fx-border-color: transparent;
+    -fx-background-color: #3c4257;
+    -fx-text-fill: white;
+}
+
+/* Text field hover state */
+.date-picker > .text-field:hover {
+    -fx-border-color: transparent;
+    -fx-background-color: #525a75;
+    -fx-text-fill: white;
+}
+
+/* Arrow buttons inside DatePicker */
+.date-picker .arrow-button {
+    -fx-border-color: transparent;
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 0;
+}
+
+/* Arrow buttons hover state */
+.date-picker .arrow-button:hover {
+    -fx-background-color: #525a75;
+    -fx-text-fill: black;
+}
+
+/* Arrows inside arrow buttons */
+.date-picker .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+/* Date cells inside DatePicker */
+.date-picker .cell {
+    -fx-background-color: #3c4257;
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+}
+
+/* Date cells hover state */
+.date-picker .cell:hover {
+    -fx-text-fill: black;
+    -fx-background-color: #525a75;
+}
+
+/* Date cells focus state */
+.date-picker .cell:focused {
+    -fx-background-color: #212121;
+}
+
+/* Selected date cells */
+.date-picker .selected {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+
+/* Focused selected date cells */
+.date-picker .selected:focused {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: white;
+}
+
+/* Month and year pane inside DatePicker popup */
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #192e48;
+    -fx-border-color: transparent;
+}
+
+/* Labels inside month and year pane */
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+}
+
+/* Week number cells inside DatePicker popup */
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: #192e48;
+}
+
+/* Spinner buttons inside DatePicker popup */
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}

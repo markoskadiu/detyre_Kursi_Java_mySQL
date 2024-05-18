@@ -1,0 +1,23 @@
+.toggle-button {
+    -fx-background-color: #475683; /* Button background color */
+    -fx-font-size: 14px; /* Button font size */
+    -fx-font-family: "Monospaced", sans-serif; /* Button font family */
+    -fx-text-fill: white;
+    -fx-border-color: transparent; /* Button border color */
+}
+
+.toggle-button:hover {
+    -fx-background-color: #596da6; /* Button background color on hover */
+}
+
+.toggle-button:pressed {
+    -fx-background-color: #849fef; /* Button background color when pressed */
+    -fx-text-fill: black;
+}
+
+.toggle-button:selected{
+    -fx-background-color: #849fef; /* Button background color when pressed */
+    -fx-text-fill: black;
+}
+
+

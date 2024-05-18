@@ -1,0 +1,18 @@
+.button {
+    -fx-background-color: #3c4257; /* Button background color */
+    -fx-font-size: 13px; /* Button font size */
+    -fx-font-family: "Monospaced", sans-serif; /* Button font family */
+    -fx-text-fill: white;
+    -fx-border-color: transparent; /* Button border color */
+}
+
+.button:hover {
+    -fx-background-color: #5b6585; /* Button background color on hover */
+}
+
+.button:pressed {
+    -fx-background-color: #8caece; /* Button background color when pressed */
+    -fx-text-fill: black;
+}
+
+

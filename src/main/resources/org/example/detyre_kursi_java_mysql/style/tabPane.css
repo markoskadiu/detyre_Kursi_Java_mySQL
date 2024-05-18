@@ -1,0 +1,27 @@
+.tab-pane {
+    -fx-background-color: #3c4257; /* Background color */
+}
+
+.tab {
+    -fx-background-color: #3c4257; /* Tab background color */
+    -fx-text-fill: #ffffff; /* Tab text color */
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tab:selected {
+    -fx-background-color: #5b6585; /* Selected tab background color */
+}
+.tab:hover {
+    -fx-background-color: #5b6585; /* Selected tab background color */
+}
+
+
+.tab-pane > .tab-header-area > .tab-header-background{
+    -fx-background-color: #16161D;
+}
+

@@ -1,0 +1,34 @@
+/* Styling for the ChoiceBox */
+.choice-box {
+    -fx-text-fill: white;
+    -fx-background-color: #fff,#3c4257; /* Background color */
+    /*-fx-border-color: #cccccc; !* Border color *!*/
+    /*-fx-border-radius: 3px; !* Border radius *!*/
+}
+
+.choice-box .label{
+    -fx-text-fill: white;
+    -fx-font-size: 13;
+}
+
+
+.choice-box .context-menu {
+    -fx-text-fill: white;
+    -fx-background-color: #59607e;
+}
+.choice-box .context-menu .menu-item {
+    -fx-text-fill: white;
+}
+.choice-box .context-menu .menu-item:hover {
+    -fx-background-color: #7782ab;
+}
+
+.choice-box:hover{
+    -fx-background-color: #f8b8b8,#3c4257;
+}
+
+.choice-box:focused{
+    -fx-background-color: #f8b8b8,#3c4257;
+    -fx-border-color: transparent;
+}
+

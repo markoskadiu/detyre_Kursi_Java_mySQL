@@ -1,0 +1,72 @@
+/* Customize the TableView itself */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+/* Style individual column headers */
+.table-view .column-header,
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-background-color: #2e3d6e; /* Set background color for column headers */
+}
+
+.table-view .column-header:hover,
+.table-view .column-header .label:hover {
+    -fx-background-color: #677193; /* Set background color for column headers on hover */
+}
+
+/* Style cells and rows */
+.table-view .table-cell {
+    -fx-border-color: #6e6e6e; /* Set border color */
+    -fx-border-width: 0.1px; /* Set border width */
+    -fx-background-color: transparent; /* Set cell background color */
+    -fx-text-fill: white; /* Set cell text color */
+    -fx-text-alignment: center;
+}
+
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #4e556d; /* Set lighter color for cell hover */
+}
+
+/* Style rows */
+.table-row-cell {
+    -fx-border-color: #6e6e6e; /* Set border color */
+    -fx-border-width: 0.1px; /* Set border width */
+    -fx-background-color: transparent; /* Set row background color */
+    -fx-text-fill: white;
+    -fx-text-alignment: center;
+}
+.table-row-cell .label {
+    -fx-background-color: transparent; /* Set row background color */
+    -fx-text-fill: white;
+    -fx-text-alignment: center;
+
+}
+/* Style scrollbars */
+.table-view .virtual-flow .scroll-bar,
+.table-view .virtual-flow .scroll-bar .track,
+.table-view .virtual-flow .scroll-bar .track-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical .thumb {
+    -fx-background-color: #2c3142; /* Darker shade for vertical scroll thumb */
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color: transparent; /* Darker shade for horizontal scroll thumb */
+}
+
+/* Apply value-specific styling using pseudo-classes */
+.table-row-cell:highlighted {
+    -fx-background-color: #81c483; /* Note: This color is not based on the main color */
+    -fx-background-radius: 15px;
+}

@@ -1,0 +1,24 @@
+* {
+    -fx-primary-color: #c21717;
+    -fx-secondary-color: #4B6EAF;
+    -fx-grey-color: #b9b9b9;
+
+    -fx-focus-color: -fx-secondary-color;
+}
+
+.text-field {
+    -fx-accent: #c21717;
+    -fx-background-color: #424242;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 0;
+}
+
+
+
+.text-field:hover{
+    -fx-background-color: #807f7f;
+
+}
+.text-field:focused {
+    -fx-background-color: #5d1965, white;
+}
