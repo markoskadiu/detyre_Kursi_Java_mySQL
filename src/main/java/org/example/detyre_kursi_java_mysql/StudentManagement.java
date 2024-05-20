@@ -181,7 +181,7 @@ public class StudentManagement implements Initializable {
 //    First Tab Courses
     
     @FXML
-    private void loadCourses(ActionEvent actionEvent) throws RuntimeException, InvalidCredentialsException
+    private void loadCourses(ActionEvent actionEvent) throws RuntimeException
     {
         setCourseTableValues();
 
@@ -205,7 +205,7 @@ public class StudentManagement implements Initializable {
     private void initialiseCourseColums(){
         LoadFromDatabase.getStudentCoursesFromDB(courseTable);
     }
-    private void initialiseCourseColums(String year) throws InvalidCredentialsException
+    private void initialiseCourseColums(String year)
     {
         LoadFromDatabase.getStudentCoursesFromDB(year,courseTable);
     }
@@ -239,7 +239,7 @@ public class StudentManagement implements Initializable {
     }
 
     @FXML
-    private void getAvg(ActionEvent actionEvent) throws InvalidCredentialsException
+    private void getAvg(ActionEvent actionEvent)
     {
         if (actionEvent.getSource() == firstYearToggle1)
         {
@@ -387,7 +387,7 @@ public class StudentManagement implements Initializable {
         }
 
     }
-    public void loadNewData(ActionEvent actionEvent) throws InvalidCredentialsException, SQLException
+    public void loadNewData(ActionEvent actionEvent) throws InvalidCredentialsException
     {
 
         switch (elementChooser.getValue()){

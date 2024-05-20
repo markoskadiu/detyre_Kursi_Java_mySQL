@@ -19,7 +19,7 @@
 /* Style cells and rows */
 .table-view .table-cell {
     -fx-border-color: #6e6e6e; /* Set border color */
-    -fx-border-width: 0.1px; /* Set border width */
+    -fx-border-width: 0px; /* Set border width */
     -fx-background-color: transparent; /* Set cell background color */
     -fx-text-fill: white; /* Set cell text color */
     -fx-text-alignment: center;
@@ -33,7 +33,7 @@
 /* Style rows */
 .table-row-cell {
     -fx-border-color: #6e6e6e; /* Set border color */
-    -fx-border-width: 0.1px; /* Set border width */
+    -fx-border-width: 0px; /* Set border width */
     -fx-background-color: transparent; /* Set row background color */
     -fx-text-fill: white;
     -fx-text-alignment: center;

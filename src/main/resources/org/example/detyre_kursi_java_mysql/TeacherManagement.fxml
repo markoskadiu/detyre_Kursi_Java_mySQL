@@ -23,11 +23,6 @@
 
 <AnchorPane fx:id="teacherPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.detyre_kursi_java_mysql.TeacherController">
    <children>
-      <TextArea fx:id="logTextArea" editable="false" layoutX="76.0" layoutY="433.0" prefHeight="67.0" prefWidth="700.0" stylesheets="@style/log_text_area.css">
-         <font>
-            <Font name="Consolas" size="12.5" />
-         </font>
-      </TextArea>
       <ImageView fitHeight="552.0" fitWidth="852.0" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@images/bridge.jpg" />
@@ -81,13 +76,13 @@
                         <Spinner fx:id="projectSpinner" editable="true" layoutX="479.0" layoutY="154.0" prefHeight="26.0" prefWidth="117.0" stylesheets="@style/spinner.css" />
                         <Spinner fx:id="examSpinner" editable="true" layoutX="479.0" layoutY="224.0" prefHeight="26.0" prefWidth="117.0" stylesheets="@style/spinner.css" />
                         <Button fx:id="addGradeButton" layoutX="295.0" layoutY="298.0" mnemonicParsing="false" onAction="#addNewGrade" prefHeight="50.0" prefWidth="98.0" stylesheets="@style/button.css" text="INSERT" />
-                        <Label fx:id="studentAndCourseIDLabel" focusTraversable="false" layoutX="199.0" layoutY="26.0" prefHeight="24.0" prefWidth="269.0" text="Label" textFill="WHITE" />
-                        <Label focusTraversable="false" layoutX="91.0" layoutY="158.0" text="Credits" textFill="WHITE" />
-                        <Label focusTraversable="false" layoutX="51.0" layoutY="228.0" text="Seminar Points" textFill="WHITE" />
-                        <Label focusTraversable="false" layoutX="380.0" layoutY="79.0" text="Midterm Points" textFill="WHITE" />
-                        <Label focusTraversable="false" layoutX="384.0" layoutY="158.0" text="Project Points" textFill="WHITE" />
-                        <Label focusTraversable="false" layoutX="420.0" layoutY="228.0" text="Exam" textFill="WHITE" />
-                        <Label focusTraversable="false" layoutX="96.0" layoutY="88.0" text="Year" textFill="WHITE" />
+                        <Label fx:id="studentAndCourseIDLabel" layoutX="199.0" layoutY="26.0" prefHeight="24.0" prefWidth="269.0" text="Label" textFill="WHITE" />
+                        <Label layoutX="91.0" layoutY="158.0" text="Credits" textFill="WHITE" />
+                        <Label layoutX="51.0" layoutY="228.0" text="Seminar Points" textFill="WHITE" />
+                        <Label layoutX="380.0" layoutY="79.0" text="Midterm Points" textFill="WHITE" />
+                        <Label layoutX="384.0" layoutY="158.0" text="Project Points" textFill="WHITE" />
+                        <Label layoutX="420.0" layoutY="228.0" text="Exam" textFill="WHITE" />
+                        <Label layoutX="96.0" layoutY="88.0" text="Year" textFill="WHITE" />
                      </children>
                   </AnchorPane>
               </content>
@@ -96,7 +91,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="380.0">
                      <children>
-                        <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="186.0" layoutY="14.0" prefHeight="62.0" prefWidth="327.0" text="Hello Markos" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="14.0" prefHeight="62.0" prefWidth="327.0" text="Hello Markos" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Viner Hand ITC" size="30.0" />
                            </font>
@@ -134,9 +129,9 @@
             </Tab>
          </tabs>
       </TabPane>
-      <Label alignment="CENTER" focusTraversable="false" layoutX="300.0" layoutY="7.0" prefHeight="43.0" prefWidth="302.0" text="Let's End Some Futures Today">
+      <Label alignment="CENTER" layoutX="300.0" layoutY="7.0" prefHeight="43.0" prefWidth="302.0" text="Let's End Some Futures Today">
          <textFill>
-            <LinearGradient endX="0.3636363925355852" endY="1.0" startX="0.34848486383756005">
+            <LinearGradient endX="0.3636363925355852" startX="0.34848486383756005">
                <stops>
                   <Stop>
                      <color>

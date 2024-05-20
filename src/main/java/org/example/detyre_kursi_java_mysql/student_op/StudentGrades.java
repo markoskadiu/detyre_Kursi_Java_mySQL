@@ -1,5 +1,6 @@
 package org.example.detyre_kursi_java_mysql.student_op;
 
+@SuppressWarnings("ClassCanBeRecord")
 public  class StudentGrades {
     private final String year;
     private final String courseName;

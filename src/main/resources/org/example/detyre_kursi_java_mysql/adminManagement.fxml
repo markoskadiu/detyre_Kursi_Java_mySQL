@@ -217,7 +217,7 @@
          </font>
       </Button>
       <TextField fx:id="searchField" layoutX="450.0" layoutY="41.5" stylesheets="@style/textfield.css" />
-      <Label fx:id="searchLabel" focusTraversable="false" layoutX="380.0" layoutY="40.0" prefHeight="18.0" prefWidth="61.0" text="Search:" textFill="WHITE">
+      <Label fx:id="searchLabel" layoutX="380.0" layoutY="40.0" prefHeight="18.0" prefWidth="61.0" text="Search:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

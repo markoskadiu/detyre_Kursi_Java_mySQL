@@ -45,7 +45,7 @@ public class TeacherController implements Initializable {
 
     public AnchorPane teacherPane;
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+    final Alert errorAlert = new Alert(Alert.AlertType.ERROR);
 
     public Label nameLabel;
     public TabPane teacherTabPane;

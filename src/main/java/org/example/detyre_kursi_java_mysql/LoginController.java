@@ -1,5 +1,7 @@
 package org.example.detyre_kursi_java_mysql;
 
+
+
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;

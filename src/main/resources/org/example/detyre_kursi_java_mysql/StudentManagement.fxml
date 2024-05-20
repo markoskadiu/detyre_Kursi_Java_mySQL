@@ -121,11 +121,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <TextArea fx:id="logTextArea" blendMode="SRC_ATOP" editable="false" layoutX="-7.0" layoutY="315.0" prefHeight="98.0" prefWidth="700.0" stylesheets="@style/log_text_area.css">
-                           <font>
-                              <Font name="Consolas" size="12.5" />
-                           </font>
-                        </TextArea>
                      </children>
                   </AnchorPane>
                </content>
@@ -134,7 +129,7 @@
       </TabPane>
       <Label alignment="CENTER" layoutX="301.0" prefHeight="42.0" prefWidth="248.0" text="The Future Starts Today">
          <textFill>
-            <LinearGradient endX="0.3636363925355852" endY="1.0" startX="0.34848486383756005">
+            <LinearGradient endX="0.3636363925355852" startX="0.34848486383756005">
                <stops>
                   <Stop>
                      <color>
