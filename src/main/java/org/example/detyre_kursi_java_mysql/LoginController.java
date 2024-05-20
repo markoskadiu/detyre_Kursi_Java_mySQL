@@ -1,8 +1,10 @@
 package org.example.detyre_kursi_java_mysql;
 
-import javafx.animation.*;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -13,16 +15,17 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -30,15 +33,11 @@ import javafx.util.Duration;
 import org.example.detyre_kursi_java_mysql.database.InvalidCredentialsException;
 import org.example.detyre_kursi_java_mysql.database.LoadFromDatabase;
 
-import javafx.scene.media.AudioClip;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.sql.SQLException;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -46,39 +45,58 @@ import static org.example.detyre_kursi_java_mysql.database.LoadFromDatabase.conn
 
 public class LoginController implements Initializable {
 
-//    GENERAL
-    @FXML private ImageView backgroundImage;
-    @FXML private TabPane tabPane;
-    @FXML private AnchorPane loginPane;
-    @FXML private  StackPane notificationPane;
+    //    GENERAL
+    @FXML
+    private ImageView backgroundImage;
+    @FXML
+    private TabPane tabPane;
+    @FXML
+    private AnchorPane loginPane;
+    @FXML
+    private StackPane notificationPane;
 
-//    ADMIN CREDENTIALS
-    @FXML private Tab adminTab;
-    @FXML private Label loginLabel2;
-    @FXML private PasswordField adminPasswordField;
-    @FXML private Button adminLoginButton;
-    @FXML private TextField adminEmailField;
+    //    ADMIN CREDENTIALS
+    @FXML
+    private Tab adminTab;
+    @FXML
+    private Label loginLabel2;
+    @FXML
+    private PasswordField adminPasswordField;
+    @FXML
+    private Button adminLoginButton;
+    @FXML
+    private TextField adminEmailField;
 
-//    TEACHER CREDENTIALS
-    @FXML private Tab teacherTab;
-    @FXML private Label loginLabel1;
-    @FXML private TextField teacherEmailField;
-    @FXML private PasswordField teacherPasswordField;
-    @FXML private Button teacherLoginButton;
+    //    TEACHER CREDENTIALS
+    @FXML
+    private Tab teacherTab;
+    @FXML
+    private Label loginLabel1;
+    @FXML
+    private TextField teacherEmailField;
+    @FXML
+    private PasswordField teacherPasswordField;
+    @FXML
+    private Button teacherLoginButton;
 
-//    STUDENT CREDENTIALS
-    @FXML private Tab studentTab;
-    @FXML private Label loginLabel;
-    @FXML private TextField studentEmailField;
-    @FXML private PasswordField studentPasswordField;
-    @FXML private Button studentLoginButton;
+    //    STUDENT CREDENTIALS
+    @FXML
+    private Tab studentTab;
+    @FXML
+    private Label loginLabel;
+    @FXML
+    private TextField studentEmailField;
+    @FXML
+    private PasswordField studentPasswordField;
+    @FXML
+    private Button studentLoginButton;
 
     // Stage and Scene variables
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-//    OTHERS
+    //    OTHERS
     private String userName;
     private String password;
 
@@ -97,11 +115,11 @@ public class LoginController implements Initializable {
             @Override
             public void run()
             {
-                try{
+                try {
                     connectToDatabase();
                     showNotification(loginPane, "Connected");
-                }catch (Exception e){
-                    showNotification(loginPane,"Error Connecting to DataBase");
+                } catch (Exception e) {
+                    showNotification(loginPane, "Error Connecting to DataBase");
                 }
             }
         });
@@ -109,10 +127,9 @@ public class LoginController implements Initializable {
         addKeyListeners();
 
 
-        Platform.runLater(new Runnable()
-        {
+        Platform.runLater(new Runnable() {
             @Override
-            public void run ()
+            public void run()
             {
                 if (!isInternetReachable()) {
                     errorAlert.setTitle("Connection Error");
@@ -147,7 +164,7 @@ public class LoginController implements Initializable {
 
     }
 
-//    Check for internet connection
+    //    Check for internet connection
     public static boolean isInternetReachable()
     {
         try {
@@ -161,8 +178,9 @@ public class LoginController implements Initializable {
         }
     }
 
-//    Login for student using email and password to get the data from DB
-    @FXML public void studentLogin(ActionEvent event)
+    //    Login for student using email and password to get the data from DB
+    @FXML
+    public void studentLogin(ActionEvent event)
     {
         userName = studentEmailField.getText();
         password = studentPasswordField.getText();
@@ -182,7 +200,9 @@ public class LoginController implements Initializable {
             showNotification(loginPane, "Invalid email or password. Please try again.");
         }
     }
-//    Loader of Student management Scene
+
+
+    //    Loader of Student management Scene
     private void loadStudentsScene()
     {
         // Load the next scene
@@ -207,7 +227,8 @@ public class LoginController implements Initializable {
         }
     }
 
-//    Login for student using email and password to get the data from DB
+
+    //    Login for student using email and password to get the data from DB
     public void teacherLogin(ActionEvent event)
     {
         userName = teacherEmailField.getText();
@@ -247,7 +268,7 @@ public class LoginController implements Initializable {
         }
     }
 
-//    Login for student using email and password to get the data from DB
+    //    Login for student using email and password to get the data from DB
     public void adminLogin(ActionEvent event) throws IOException
     {
         userName = adminEmailField.getText();
@@ -257,32 +278,31 @@ public class LoginController implements Initializable {
             return;
         }
 
-            if (userName.equals("admin") && password.equals("admin")){
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("adminManagement.fxml"));
-                root = loader.load();
+        if (userName.equals("admin") && password.equals("admin")) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("adminManagement.fxml"));
+            root = loader.load();
 
-                // Get controller of Scene2
-                AdminController adminController = loader.getController();
+            // Get controller of Scene2
+            AdminController adminController = loader.getController();
 
 
-                // Get the current stage
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            // Get the current stage
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-                // Create a new Scene with loaded root
-                scene = new Scene(root);
+            // Create a new Scene with loaded root
+            scene = new Scene(root);
 
-                // Set the new Scene to the stage
-                stage.setScene(scene);
-                stage.show();
-            }
-            else {
-                showNotification(loginPane, "Please enter a valid email address or password");
-                setWrongFieldBorder(2);
-            }
+            // Set the new Scene to the stage
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            showNotification(loginPane, "Please enter a valid email address or password");
+            setWrongFieldBorder(2);
+        }
 
     }
 
-//    Methods to make label change color
+    //    Methods to make label change color
     private Color getRandomColor()
     {
         Random random = new Random();
@@ -291,7 +311,9 @@ public class LoginController implements Initializable {
         int blue = random.nextInt(256); // Random value between 0 and 255 for blue
         return Color.rgb(red, green, blue);
     }
-    private void discoLabel(Label label){
+
+    private void discoLabel(Label label)
+    {
 
         Color color = getRandomColor();
 
@@ -303,7 +325,7 @@ public class LoginController implements Initializable {
                 new KeyFrame(Duration.seconds(2),
                         new KeyValue(label.textFillProperty(), getRandomColor(), Interpolator.EASE_BOTH)),
                 new KeyFrame(Duration.seconds(3),
-                        new KeyValue(label.textFillProperty(), getRandomColor(),Interpolator.EASE_BOTH)),
+                        new KeyValue(label.textFillProperty(), getRandomColor(), Interpolator.EASE_BOTH)),
                 new KeyFrame(Duration.seconds(4),
                         new KeyValue(label.textFillProperty(), getRandomColor(), Interpolator.EASE_BOTH)),
                 new KeyFrame(Duration.seconds(5),
@@ -319,7 +341,7 @@ public class LoginController implements Initializable {
         timeline.play();
     }
 
-//    Method to send an email in case of forgetting credentials
+    //    Method to send an email in case of forgetting credentials
     public void forgotPassword(ActionEvent actionEvent)
     {
         if (Desktop.isDesktopSupported()) {
@@ -340,22 +362,20 @@ public class LoginController implements Initializable {
         }
     }
 
-//    Method to set the backgound images
+    //    Method to set the backgound images
     public void getBackgroundImage()
     {
         tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
             @Override
             public void changed(ObservableValue<? extends Tab> observableValue, Tab tab, Tab t1)
             {
-                if (t1 == studentTab){
+                if (t1 == studentTab) {
                     backgroundImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images" +
                             "/bridge.jpg"))));
-                }
-                else if (t1 == teacherTab){
+                } else if (t1 == teacherTab) {
                     backgroundImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images" +
                             "/lms.jpg"))));
-                }
-                else if (t1 == adminTab){
+                } else if (t1 == adminTab) {
                     backgroundImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images" +
                             "/matrix.jpg"))));
                 }
@@ -363,8 +383,8 @@ public class LoginController implements Initializable {
         });
     }
 
-//    Method to display notifications
-    public  void showNotification(AnchorPane root, String message)
+    //    Method to display notifications
+    public void showNotification(AnchorPane root, String message)
     {
         /* Create a label for the notification message*//**/
         Label notificationLabel = new Label(message);
@@ -376,7 +396,6 @@ public class LoginController implements Initializable {
         notificationLabel.setMaxHeight(80);
         notificationLabel.setMinWidth(220);
         notificationLabel.setMaxWidth(225);
-
 
 
         // Create a stack pane to hold the notification label
@@ -394,7 +413,7 @@ public class LoginController implements Initializable {
 //        audioClip.pl
         timeline.getKeyFrames().addAll(
                 new KeyFrame(Duration.ZERO,
-                        new KeyValue(notificationPane.opacityProperty(),0.0)),
+                        new KeyValue(notificationPane.opacityProperty(), 0.0)),
                 new KeyFrame(Duration.seconds(1.5),
                         new KeyValue(notificationPane.opacityProperty(), 1.0)),
                 new KeyFrame(Duration.seconds(3),
@@ -410,16 +429,17 @@ public class LoginController implements Initializable {
         timeline.play();
     }
 
-// Methods to add enter key listener to fire the login button
+    // Methods to add enter key listener to fire the login button
     private void addKeyListeners()
     {
-        addEnterKeyHandler(studentEmailField,studentLoginButton);
-        addEnterKeyHandler(studentPasswordField,studentLoginButton);
-        addEnterKeyHandler(teacherEmailField,teacherLoginButton);
-        addEnterKeyHandler(teacherPasswordField,teacherLoginButton);
-        addEnterKeyHandler(adminEmailField,adminLoginButton);
-        addEnterKeyHandler(adminPasswordField,adminLoginButton);
+        addEnterKeyHandler(studentEmailField, studentLoginButton);
+        addEnterKeyHandler(studentPasswordField, studentLoginButton);
+        addEnterKeyHandler(teacherEmailField, teacherLoginButton);
+        addEnterKeyHandler(teacherPasswordField, teacherLoginButton);
+        addEnterKeyHandler(adminEmailField, adminLoginButton);
+        addEnterKeyHandler(adminPasswordField, adminLoginButton);
     }
+
     private void addEnterKeyHandler(TextField textField, Button button)
     {
         textField.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
@@ -429,8 +449,9 @@ public class LoginController implements Initializable {
         });
     }
 
-//    Method in case of an introuder
-    private void setWrongFieldBorder(int fields){
+    //    Method in case of an introuder
+    private void setWrongFieldBorder(int fields)
+    {
         switch (fields) {
             case 1:
                 studentPasswordField.setStyle("-fx-border-color: red");
@@ -447,8 +468,9 @@ public class LoginController implements Initializable {
 
     }
 
-//    Method to reload the scene and controller
-    public void reloadController() {
+    //    Method to reload the scene and controller
+    public void reloadController()
+    {
         try {
             // Load the FXML file associated with this controller
             FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
