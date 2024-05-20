@@ -4,7 +4,6 @@ package org.example.detyre_kursi_java_mysql.database;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import org.example.detyre_kursi_java_mysql.enums.StudentFields;
 import org.example.detyre_kursi_java_mysql.enums.TeacherField;
 
@@ -99,7 +98,7 @@ public class DatabaseEditor {
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, value);
-                preparedStatement.setString(2, String.valueOf(LoadFromDatabase.getTeacherID()));
+                preparedStatement.setString(2, String.valueOf(LoadFromDatabase.getVar_TeacherID()));
 
                 int rowsInserted = preparedStatement.executeUpdate();
                 if (rowsInserted > 0) {
@@ -224,8 +223,6 @@ public class DatabaseEditor {
 
                 logger.info("Registered Student Successfully \n");
                 butt.setStyle("-fx-background-color: green; -fx-text-fill: white;");
-
-
 
             }
 

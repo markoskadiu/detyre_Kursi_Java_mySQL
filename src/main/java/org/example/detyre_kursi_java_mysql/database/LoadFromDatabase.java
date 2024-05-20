@@ -1,13 +1,10 @@
 package org.example.detyre_kursi_java_mysql.database;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import org.example.detyre_kursi_java_mysql.LoginController;
 import org.example.detyre_kursi_java_mysql.admin.StudentList;
 import org.example.detyre_kursi_java_mysql.admin.TeacherList;
 import org.example.detyre_kursi_java_mysql.enums.Country;
@@ -29,12 +26,12 @@ public class LoadFromDatabase {
 
 //    DATABASE ATTRIBUTES
     private static final Logger logger = Logger.getLogger(LoadFromDatabase.class.getName());
-
     private static final String URL = "jdbc:mysql://sql11.freesqldatabase.com:3306/sql11703584";
     private static final String USER = "sql11703584";
     private static final String PASSWORD = "qph9ucVZv6";
-//    DATABASE RELATED
+
     static Connection connection;
+
 //    STUDENT ATTRIBUTES
     private static String var_studentEmail;
     private static String var_studentPassword;
@@ -49,6 +46,7 @@ public class LoadFromDatabase {
     private static String var_studentStudyProgram;
     private static Integer var_StudentID;
     private static String[] var_studentCourses;
+
     // Teacher attributes
     private static String var_teacherFirstName;
     private static String var_teacherLastName;
@@ -65,7 +63,10 @@ public class LoadFromDatabase {
 
     private static Alert alert = new Alert(Alert.AlertType.ERROR);
 
-//  ESTABLISHING CONECTION TO THE DATABASE
+
+//   _______________---------------________________ METHODS___________________---------------------___________
+
+    //  ESTABLISHING CONECTION TO THE DATABASE
     public static void connectToDatabase()
     {
 
@@ -85,7 +86,10 @@ public class LoadFromDatabase {
 
     }
 
-//    STUDENT METHODS
+// ---------------------------------------------------   STUDENT METHODS-------------------------------------------
+
+    /* This method retrieves student data from the database based on the provided email and password.
+     If the credentials are valid, it populates the student attributes with the retrieved data.*/
     public static void getStudentDataFromDB(String parameterUserEmail, String parameterUserpassword) throws InvalidCredentialsException
     {
 
@@ -119,6 +123,9 @@ public class LoadFromDatabase {
                 throw new InvalidCredentialsException("SQL error occurred: " + e.getMessage());
             }
     }
+
+    /* This method retrieves the courses of a student for a given year from the database
+     and populates the provided TableView with this data.*/
     public static void getStudentCoursesFromDB(String year,TableView<StudentCourses> tableView)
     {
         ObservableList<StudentCourses> coursesList = FXCollections.observableArrayList();
@@ -156,6 +163,9 @@ public class LoadFromDatabase {
                 alert.show();
         }
     }
+
+    /* This method retrieves all courses of a student from the database
+     and populates the provided TableView with this data*/
     public static void getStudentCoursesFromDB(TableView<StudentCourses> tableView)
     {
 
@@ -195,6 +205,8 @@ public class LoadFromDatabase {
         }
     }
 
+    /* This method retrieves all student grades by course from the database
+     and populates the provided TableView with this data.*/
     public static void getAllStudentGradesByCourse(TableView<StudentGrades> tableView)
     {
         ObservableList<StudentGrades> studentGradesList = FXCollections.observableArrayList();
@@ -238,7 +250,10 @@ public class LoadFromDatabase {
             alert.show();
         }
     }
-     public static void getAllStudentGradesByCourse(int studyYear, TableView<StudentGrades> tableView)
+
+    /* This method retrieves all student grades by course for a given study year from the database
+     and populates the provided TableView with this data.*/
+    public static void getAllStudentGradesByCourse(int studyYear, TableView<StudentGrades> tableView)
     {
 
         ObservableList<StudentGrades> studentGradesList = FXCollections.observableArrayList();
@@ -282,6 +297,9 @@ public class LoadFromDatabase {
                 alert.show();
         }
     }
+
+    /* This method calculates the average grade for a given year
+     and displays the result in the provided Label.*/
     public static void calculateAverageGrade(int year,Label label)
     {
 
@@ -312,6 +330,9 @@ public class LoadFromDatabase {
             alert.show();
         }
     }
+
+    /* This method calculates the overall average grade
+     and displays the result in the provided Label.*/
     public static void calculateAverageGrade(Label label)
     {
         String sql = "SELECT CalculateAverageWeightedGrade(?) AS avg_grade";
@@ -343,7 +364,10 @@ public class LoadFromDatabase {
     }
 
 
-//    TEACHER METHODS
+// -------------------------------------------------   TEACHER-METHODS------------------------------------------
+
+    /* This method retrieves teacher data from the database based on the provided email and password.
+     If the credentials are valid, it populates the teacher attributes with the retrieved data.*/
     public static void getTeacherDataFromDB(String parameterUserEmail, String parameterUserpassword) throws InvalidCredentialsException
     {
 
@@ -377,6 +401,9 @@ public class LoadFromDatabase {
             alert.show();
     }
 }
+
+    /* This method retrieves the courses taught by a teacher from the database
+     and populates the provided TableView with this data.*/
     public static void getCoursesForTeacher(TableView<TeacherCourse> tableView )
     {
         ObservableList<TeacherCourse> coursesList = FXCollections.observableArrayList();
@@ -387,7 +414,7 @@ public class LoadFromDatabase {
                 "WHERE T.teacher_id = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, getTeacherID());
+            statement.setInt(1, getVar_TeacherID());
             try (ResultSet resultSet = statement.executeQuery()) {
 
 
@@ -411,6 +438,9 @@ public class LoadFromDatabase {
         logger.severe("Could not connect to database: " + e.getMessage());
     }
 }
+
+    /* This method retrieves the students participating in a specific course from the database
+     and populates the provided TableView with this data.*/
     public static void getStudentsByCourse(TableView<StudentParticipation> tableView , int par_courseID)
     {
         ObservableList<StudentParticipation> studentParticipationList = FXCollections.observableArrayList();
@@ -450,9 +480,12 @@ public class LoadFromDatabase {
         }
     }
 
-//    ADMIN METHODS
+//  --------------------------------------------  ADMIN METHODS -----------------------------------------
 
-    public static void getAllStudyPrograms(List<String> par_studyPrograms) {
+    /* This method retrieves all study programs from the database
+     and populates the provided list with this data.*/
+    public static void getAllStudyPrograms(List<String> par_studyPrograms)
+    {
         // SQL query to select program names from the StudyProgram table
         String sql = "SELECT program_name AS name FROM StudyProgram;";
 
@@ -472,7 +505,11 @@ public class LoadFromDatabase {
 
         }
     }
-    public static void getAllStudents(TableView<StudentList> tableView){
+
+    /* This method retrieves all students from the database
+     and populates the provided TableView with this data.*/
+    public static void getAllStudents(TableView<StudentList> tableView)
+    {
 
         ObservableList<StudentList> studentLists = FXCollections.observableArrayList();
 
@@ -521,6 +558,9 @@ public class LoadFromDatabase {
 
         }
     }
+
+    /* This method retrieves all teachers from the database, populates a list of TeacherList objects,
+     and sets the items of the provided TableView with this list.*/
     public static void getAllTeachers(TableView<TeacherList> tableView)
     {
 
@@ -572,8 +612,7 @@ public class LoadFromDatabase {
     }
 
 
-
-    //_________________________GETTER METHODS FOR STUDENT_________________________________________________\\
+//_________________________GETTER METHODS FOR STUDENT_________________________________________________---------
 
     public static String getVar_studentEmail()
     {
@@ -686,38 +725,38 @@ public class LoadFromDatabase {
         return stringBuilder.toString();
     }
 
+
 // ======================== GETTER METHODS FOR TEACHERS =====================================================
-    public static String getTeacherFirstName() {
+    public static String getVar_teacherFirstName() {
         return var_teacherFirstName;
     }
-    public static String getTeacherLastName() {
+    public static String getVar_TeacherLastName() {
         return var_teacherLastName;
     }
-    public static Date getTeacherDateOfBirth() {
+    public static Date getVar_TeacherDateOfBirth() {
         return var_teacherDateOfBirth;
     }
-    public static String getTeacherGender() {
+    public static String getVar_TeacherGender() {
         return var_teacherGender;
     }
-    public static String getTeacherAddress() {
+    public static String getVar_TeacherAddress() {
         return var_teacherAddress;
     }
-    public static String getTeacherCountry() {
+    public static String getVar_TeacherCountry() {
         return var_teacherCountry;
     }
-    public static String getTeacherEmail() {
+    public static String getVar_TeacherEmail() {
         return var_teacherEmail;
     }
-    public static String getTeacherPassword() {
+    public static String getVar_TeacherPassword() {
         return var_teacherPassword;
     }
-    public static String getTeacherPhoneNumber() {
+    public static String getVar_TeacherPhoneNumber() {
         return var_teacherPhoneNumber;
     }
-    public static int getTeacherID() {
+    public static int getVar_TeacherID() {
         return var_teacherID;
     }
-
     public static String getAllInfoTeacher()
     {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -750,7 +789,6 @@ public class LoadFromDatabase {
 
         return stringBuilder.toString();
     }
-
     public List<String> getVar_studyPrograms(){
         return var_studyPrograms;
     }

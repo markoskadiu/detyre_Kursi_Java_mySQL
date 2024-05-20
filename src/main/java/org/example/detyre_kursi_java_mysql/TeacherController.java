@@ -19,12 +19,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.example.detyre_kursi_java_mysql.database.DatabaseEditor;
 import org.example.detyre_kursi_java_mysql.database.LoadFromDatabase;
@@ -556,7 +554,7 @@ public class TeacherController implements Initializable {
 
             clearAllFields();
 
-            LoadFromDatabase.getTeacherDataFromDB(LoadFromDatabase.getTeacherEmail(), LoadFromDatabase.getTeacherPassword());
+            LoadFromDatabase.getTeacherDataFromDB(LoadFromDatabase.getTeacherEmail(), LoadFromDatabase.getVar_TeacherPassword());
             displayData(LoadFromDatabase.getAllInfoTeacher(), LoadFromDatabase.getTeacherFirstName());
         } catch (Exception e) {
             System.err.println(e.getMessage());
