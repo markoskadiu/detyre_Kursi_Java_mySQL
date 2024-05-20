@@ -554,8 +554,8 @@ public class TeacherController implements Initializable {
 
             clearAllFields();
 
-            LoadFromDatabase.getTeacherDataFromDB(LoadFromDatabase.getTeacherEmail(), LoadFromDatabase.getVar_TeacherPassword());
-            displayData(LoadFromDatabase.getAllInfoTeacher(), LoadFromDatabase.getTeacherFirstName());
+            LoadFromDatabase.getTeacherDataFromDB(LoadFromDatabase.getVar_TeacherEmail(), LoadFromDatabase.getVar_TeacherPassword());
+            displayData(LoadFromDatabase.getAllInfoTeacher(), LoadFromDatabase.getVar_teacherFirstName());
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

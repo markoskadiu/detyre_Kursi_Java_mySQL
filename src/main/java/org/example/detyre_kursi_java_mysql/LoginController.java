@@ -248,7 +248,8 @@ public class LoginController implements Initializable {
 
             // Get controller of Scene2
             TeacherController managerController = loader.getController();
-            managerController.displayData(LoadFromDatabase.getAllInfoTeacher(), LoadFromDatabase.getTeacherFirstName());
+            managerController.displayData(LoadFromDatabase.getAllInfoTeacher(),
+                    LoadFromDatabase.getVar_teacherFirstName());
 
             // Get the current stage
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
